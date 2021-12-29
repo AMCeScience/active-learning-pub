@@ -1,0 +1,55 @@
+import os
+
+CWD = os.getcwd()
+
+DB_FILE = CWD + '/Database/miner_database.db'
+
+DEBUG = False
+
+### Pubmed API config:
+PUBMED_EMAIL = 'aj.vanaltena@amsterdamumc.nl'
+DB_INSERT_LIMIT = 100
+
+### CLEF specific config
+STORE_LOCATION = CWD + '/Pubmed results/'
+TRAIN_QREL_LOCATION = CWD + '/Database/CLEF_data/qrel_abs_train'
+TEST_QREL_LOCATION = CWD + '/Database/CLEF_data/qrel_abs_test'
+DOC_COLLECTION = CWD + '/Text_data/document_collection.pickle'
+
+TEXT_DATA_LOCATION = CWD + '/Text_data'
+RESULTS_LOCATION = CWD + '/Results'
+PLOT_LOCATION = CWD + '/Plots/'
+
+### Preprocessing
+EXTRA_STOPWORDS = []
+KEEP_DASHES = False
+KEEP_NUMBERS = False
+
+MIN_DOCFREQ = 2
+MAX_DOCFREQ = 0.95
+MATRIX_COLLECTION = CWD + '/Text_data/matrix_collection.pickle'
+
+### Parallel computing
+POOL_PROCESSES = 6
+NUM_ITERATIONS = 50
+
+SIMILARITY_STEPS = [0, 1, 2, 3, 4, 5, 7, 9, 10, 15, 30]
+
+SINGLE_REVIEWS = ['CD009647', 'CD008054', 'CD010438', 'CD009185', 'CD008691', 'CD008081', 'CD010023', 'CD009591', 'CD009372', 'CD008803', 'CD012019', 'CD008760']
+GROUP_REVIEWS = ['CD007427', 'CD010542', 'CD010705', 'CD009593', 'CD009551', 'CD007394', 'CD009135', 'CD009579', 'CD010173', 'CD010276', 'CD009944', 'CD011134', 'CD009323', 'CD009519', 'CD010409', 'CD009786', 'CD010386', 'CD010632', 'CD008782', 'CD010772', 'CD010771', 'CD011145', 'CD010653', 'CD010860', 'CD010775', 'CD010783', 'CD010633', 'CD010896', 'CD011549', 'CD011548', 'CD010339', 'CD007431', 'CD008686', 'CD011984', 'CD009925', 'CD011975', 'CD008643', 'CD009020']
+
+# Review groups, grouped by manually assigned ICD-10 codes
+GROUPS = {
+  'tuberculosis': ['CD009593', 'CD010705'],
+  'aspergillosis': ['CD007394', 'CD009135', 'CD009551', 'CD009579'],
+  'cancer': ['CD009944', 'CD011134', 'CD009323', 'CD010409', 'CD009519', 'CD010276', 'CD010173', 'CD009786'],
+  'dementia': ['CD010771', 'CD010632', 'CD008782', 'CD010775', 'CD010653', 'CD010896', 'CD010772', 'CD011145', 'CD010633', 'CD010386', 'CD010783', 'CD010860'],
+  'liver and bile duct': ['CD011549', 'CD011548', 'CD010339', 'CD010542'],
+  'joint pain': ['CD008643', 'CD007427', 'CD008686', 'CD009020', 'CD007431'],
+  'down syndrome': ['CD011984', 'CD011975', 'CD009925'],
+  'singles': ['CD010438', 'CD008054', 'CD009591', 'CD008691', 'CD008803', 'CD009647', 'CD008760', 'CD009372', 'CD012019', 'CD008081', 'CD009185', 'CD010023'],
+}
+
+EXCLUDE_REVIEWS = True
+
+REMOVED_REVIEWS = GROUPS['singles']
